@@ -13,7 +13,7 @@ const Home = () => {
         <ToDoCard titulo="Consertar a geladeira" />
         <ToDoCard titulo="Pendirar os quadros" />
         <ToDoCard titulo="Ligar para mamãe" />
-      </div>s
+      </div>
     </section>
   );
 };
