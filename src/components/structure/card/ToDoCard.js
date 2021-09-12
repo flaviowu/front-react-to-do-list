@@ -1,5 +1,5 @@
 import React from 'react'
-import "./ToDoCard.css"
+import "./ToDoCard.scss"
 
 const ToDoCard = (props) => {
     return (
