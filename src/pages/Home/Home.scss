@@ -1,0 +1,14 @@
+@import "../../../styles/style.scss";
+
+section.Home {
+    @include displayFlexColumn;
+    align-items: center;
+
+    h2 {
+        font-weight: 900;
+    }
+
+    div.home-card-list{
+        @include displayFlexColumn;
+    }
+}

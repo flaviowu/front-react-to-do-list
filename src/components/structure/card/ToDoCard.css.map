@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACR,SAAS,EAAE,KAAK;EAChB,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,cAAc;EACvB,MAAM,EAAE,WAAW;EACnB,UAAU,EAAE,iBAAiB;EAC7B,MAAM,EAAE,SAAS;CAIpB;;AAED,AAAA,WAAW,AAAA,MAAM,CAAC;EACd,SAAS,EAAE,UAAU;CACxB",
+    "sources": [
+        "ToDoCard.scss"
+    ],
+    "names": [],
+    "file": "ToDoCard.css"
+}

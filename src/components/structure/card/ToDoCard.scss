@@ -1,0 +1,16 @@
+.to-do-card {
+    min-width: 20rem;
+    max-width: 40rem;
+    text-align: left;
+    padding: 0 .5rem 0 1rem;
+    margin: 0 0 .3rem 0;
+    transition: 300ms ease-in-out;
+    border: solid 2px;
+
+    // -webkit-box-shadow: 10px 10px 15px -1px #000000; 
+    // box-shadow: 10px 10px 15px -1px #000000;
+}
+
+.to-do-card:hover {
+    transform: scale(1.1);
+}

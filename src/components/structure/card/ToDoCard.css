@@ -1,0 +1,16 @@
+.to-do-card {
+  min-width: 20rem;
+  max-width: 40rem;
+  text-align: left;
+  padding: 0 .5rem 0 1rem;
+  margin: 0 0 .3rem 0;
+  -webkit-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+  border: solid 2px;
+}
+
+.to-do-card:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+/*# sourceMappingURL=ToDoCard.css.map */
