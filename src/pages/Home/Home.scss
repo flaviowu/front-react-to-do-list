@@ -8,7 +8,4 @@ section.Home {
         font-weight: 900;
     }
 
-    div.home-card-list{
-        @include displayFlexColumn;
-    }
 }

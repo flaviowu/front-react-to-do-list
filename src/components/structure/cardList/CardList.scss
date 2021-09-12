@@ -1,0 +1,6 @@
+@import "../../../../styles/style.scss";
+
+div.card-list{
+    @include displayFlexColumn;
+    align-items: center;
+}

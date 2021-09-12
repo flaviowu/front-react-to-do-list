@@ -1,17 +1,73 @@
-.to-do-card {
-    min-width: 20rem;
-    max-width: 40rem;
-    text-align: left;
-    padding: 0 .5rem 0 1rem;
-    margin: 0 0 .3rem 0;
-    transition: 200ms ease-in-out;
-    border: solid 2px;
+@import "../../../../styles/colors";
+@import "../../../../styles/style.scss";
 
+@mixin card-general {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-width: 20rem;
+  max-width: 100%;
+  text-align: left;
+  padding: 0 0.5rem 0 1rem;
+  margin: 0 0 0.3rem 0;
+  transition: 200ms ease-in-out;
+  border: solid 2px;
 
+  .info-parcial {
+		@include displayFlexColumn;
+		justify-items: flex-end;
+		
+    p {
+			text-align: left;
+      font-size: 10px;
+
+      span {
+        font-weight: 625;
+      }
+    }
+
+    button {
+      margin: 0 0 0.5rem 0;
+      background-color: white;
+      border: solid 1px;
+      width: 4rem;
+      text-align: center;
+      font-size: 9px;
+    }
+  }
 }
 
-.to-do-card:hover {
-    transform: scale(1.05);
-    -webkit-box-shadow: 10px 10px 15px -1px #000000; 
-    box-shadow: 10px 10px 15px -1px #000000;
+@mixin general-hover {
+  transform: scale(1.05);
+  -webkit-box-shadow: 0px 15px 15px 5px #000000;
+  box-shadow: 0px 15px 15px 5px #000000;
+}
+
+.to-do-card {
+  @include card-general;
+}
+
+.to-do-card-Alta {
+  background-color: $color-danger;
+  @include card-general;
+}
+
+.to-do-card-Normal {
+  background-color: $color-attention;
+  @include card-general;
+}
+
+.to-do-card-Baixa {
+  background-color: $color-secondary;
+  @include card-general;
+}
+
+.to-do-card-Alta:hover {
+  @include general-hover;
+}
+.to-do-card-Normal:hover {
+  @include general-hover;
+}
+.to-do-card-Baixa:hover {
+  @include general-hover;
 }
