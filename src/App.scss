@@ -1,7 +1,9 @@
+@import "./../styles/style.scss";
+
 .App {
-  display: flex;
-  flex-direction: column;
+  @include displayFlexColumn;
   height: 100%;
   text-align: center;
+  align-items: center;
 }
 

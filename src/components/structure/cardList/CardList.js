@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import ToDoCard from "../card/ToDoCard";
 import axios from "axios";
 import "./CardList.scss"
+import { sortByPrioridade } from "../../../modules/utilities/sort"
 
 const CardList = () => {
   const [tarefas, setTarefas] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3005/tarefas").then((res) => {
-      const tarefas = res.data;
+      const tarefas = sortByPrioridade(res.data);
       setTarefas(tarefas);
       console.log(tarefas);
     });

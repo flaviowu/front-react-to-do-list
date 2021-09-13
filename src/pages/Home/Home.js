@@ -1,5 +1,6 @@
 import React from "react";
 import CardList from "../../components/structure/cardList/CardList";
+import "./Home.scss"
 
 const Home = () => {
 

@@ -1,11 +1,11 @@
 @import "../../../styles/style.scss";
+@import "../../../styles/colors";
 
 section.Home {
-    @include displayFlexColumn;
-    align-items: center;
+  @include displayFlexColumn;
 
-    h2 {
-        font-weight: 900;
-    }
-
+  h2 {
+    color: $color-primary;
+    font-weight: 900;
+  }
 }
