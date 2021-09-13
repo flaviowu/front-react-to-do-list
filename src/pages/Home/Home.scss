@@ -3,6 +3,7 @@
 
 section.Home {
   @include displayFlexColumn;
+  width: 100%;
 
   h2 {
     color: $color-primary;

@@ -1,4 +1,7 @@
+@import "./../styles/style.scss";
+
 body {
+  @include displayFlexColumn;
   margin: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
