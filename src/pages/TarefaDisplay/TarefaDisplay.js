@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { getPrioridade } from "../../modules/utilities/getPrioridade";
 import { dataFormat } from "../../modules/utilities/getData";
+import { Api } from "../../modules/Api/Api";
 
 const TarefaDisplay = (props) => {
-  const [tarefa, setTarefa] = useState({});
+  const [ tarefa, setTarefa ] = useState({});
 
   // console.log(props.match.params.id)
   const id = props.match.params.id;
 
   useEffect(() => {
-    axios.get(`http://localhost:3005/tarefas/${id}`).then((res) => {
-      setTarefa(res.data);
-    });
-  }, []);
+    Api.getTarefa(id)
+      .then((res) => {
+        setTarefa(res.data);
+      })
+      .catch((err) => console.log(err));
+  });
 
   return (
     <div className="tarefa-display">
@@ -28,6 +31,9 @@ const TarefaDisplay = (props) => {
       <p>{getPrioridade(tarefa.prioridade)}</p>
       <h4>Detalhes:</h4>
       <p>{tarefa.descricao}</p>
+      <Link to={`/edit/${tarefa._id}`}>
+        <button type="button">Editar</button>
+      </Link>
     </div>
   );
 };

@@ -1,28 +1,103 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { Api } from "../../modules/Api/Api";
+import { dataFormat, dataFormat2, dataFormatISO } from "../../modules/utilities/getData";
 
 const TarefaEdit = (props) => {
-  const [tarefa, setTarefa] = useState({});
+  const [fields, setFields] = useState({});
 
-  // console.log(props.match.params.id)
   const id = props.match.params.id;
 
   useEffect(() => {
-    axios.get(`http://localhost:3005/tarefas/${id}`).then((res) => {
-      setTarefa(res.data);
-    });
+    Api.getTarefa(id)
+      .then((res) => {
+        setFields(res.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
-  const handleSubmit = (e) => {
+  async function handleSubmit (e) {
     e.preventDefault();
-    axios.put(`http://localhost:3005/tarefas/update/${id}`, tarefa);
-  };
+    const titulo = e.target.titulo.value;
+    const prioridade = e.target.prioridade.value;
+    const situacao = e.target.situacao.value;
+    const prazo = e.target.prazo.value;
+    const descricao = e.target.descricao.value;
+
+    const Tarefa = {
+      titulo: titulo,
+      prioridade: prioridade,
+      situacao: situacao,
+      prazo: dataFormatISO(prazo),
+      descricao: descricao,
+    };
+
+    console.log(Tarefa);
+
+    Api.putTarefa(id, Tarefa);
+  }
+
+  function handleChange(e) {
+    const auxFields = { ...fields };
+    auxFields[e.target.name] = e.target.value;
+    setFields(auxFields);
+  }
+  
+
+  function handleClick() {
+    console.log(fields);
+    console.log(dataFormat(fields.prazo));
+  }
 
   return (
-    <form className="tarefa-edit" onSubmit={() => handleSubmit()}>
-      <input type="text" value={tarefa.titulo}/>
-      <button type="submit">OK!</button>
-    </form>
+    <div className="tarefa-add">
+      <h2 onClick={handleClick}>oi</h2>
+      <form className="tarefa-add-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="titulo"
+          id="titulo"
+          value={fields.titulo}
+          onChange={handleChange}
+        />
+        <input
+          type="date"
+          name="prazo"
+          id="prazo"
+          value={dataFormat2(fields.prazo)}
+          onChange={handleChange}
+        />
+        <select
+          name="prioridade"
+          id="prioridade"
+          value={fields.prioridade}
+          onChange={handleChange}
+        >
+          <option value="1">Baixa</option>
+          <option value="2">Normal</option>
+          <option value="3">Alta</option>
+        </select>
+        <select
+          name="situacao"
+          id="situacao"
+          value={fields.situacao}
+          onChange={handleChange}
+        >
+          <option value="a fazer">a fazer</option>
+          <option value="fazendo">fazendo</option>
+          <option value="feito">feito</option>
+        </select>
+        <textarea
+          name="descricao"
+          id="descricao"
+          rows="3"
+          columns="50"
+          onChange={handleChange}
+          value={fields.descricao}
+        ></textarea>
+
+        <button type="submit">Salvar</button>
+      </form>
+    </div>
   );
 };
 

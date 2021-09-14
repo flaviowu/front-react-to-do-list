@@ -11,7 +11,6 @@ const CardList = () => {
   useEffect(() => {
     axios.get(`http://localhost:3005/tarefas/${filter}`).then((res) => {
       setTarefas(res.data);
-      console.log(tarefas);
     });
   }, [filter]);
 
