@@ -1,10 +1,17 @@
 export function sortByPrioridade(lista) {
-  console.log(lista)
+  // console.log(lista)
     let listaOrdenada = lista.sort((item1, item2) => {
-        console.log([item1.prioridade, item2.prioridade])
+        // console.log([item1.prioridade, item2.prioridade])
         return item1.prioridade > item2.prioridade ? -1 : 1
     })
     return listaOrdenada
+}
+
+export function sortByPrazo(lista) {
+  let listaOrdenada = lista.sort((item1, item2) => {
+    return item1.prazo > item2.prazo ? 1 : 1
+  })
+  return listaOrdenada
 }
 
 // let l = [
