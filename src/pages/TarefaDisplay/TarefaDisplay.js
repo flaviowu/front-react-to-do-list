@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getPrioridade } from "../../modules/utilities/getPrioridade";
 import { dataFormat } from "../../modules/utilities/getData";
+
 const TarefaDisplay = (props) => {
   const [tarefa, setTarefa] = useState({});
 

@@ -1,9 +1,21 @@
 @import "../../../../styles/style.scss";
 
-div.card-list{
-    @include displayFlexColumn;
-    align-content: center;
-    align-items: center;
-    
-    width: 100%;
+div.card-list {
+  @include displayFlexColumn;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+
+  h4 {
+      margin-bottom: .3rem;
+  }
+
+  &-filters {
+    margin: 0 0 0.8rem 0;
+
+    .filtro-btn {
+      background-color: white;
+      border: none;
+    }
+  }
 }
