@@ -1,28 +1,32 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { getPrioridade } from "../../modules/utilities/getPrioridade";
+import { dataFormat } from "../../modules/utilities/getData";
 const TarefaDisplay = (props) => {
+  const [tarefa, setTarefa] = useState({});
+
+  // console.log(props.match.params.id)
+  const id = props.match.params.id;
+
+  useEffect(() => {
+    axios.get(`http://localhost:3005/tarefas/${id}`).then((res) => {
+      setTarefa(res.data);
+    });
+  }, []);
+
   return (
     <div className="tarefa-display">
       <h3>Detalhes da tarefa:</h3>
-      <label for="tarefa-titulo">Título</label>
-      <input
-        type="text"
-        name="tarefa-titulo"
-        className="tarefa-input"
-        id="tarefa-titulo"
-        placeholder="Digite o título da tarefa"
-      />
-      <label for="" className="tarefa-label">
-        Detalhes
-      </label>
-      <textarea
-        name="tarefa-detalhes"
-        className="tarefa-detalhes"
-        id="tarefa-detalhes"
-        rows="3"
-        cols="50"
-        maxlength="150"
-      ></textarea>
+      <h4>Título:</h4>
+      <p>{tarefa.titulo}</p>
+      <h4>Situação:</h4>
+      <p>{tarefa.situacao}</p>
+      <h4>Prazo:</h4>
+      <p>{dataFormat(tarefa.prazo)}</p>
+      <h4>Prioridade:</h4>
+      <p>{getPrioridade(tarefa.prioridade)}</p>
+      <h4>Detalhes:</h4>
+      <p>{tarefa.descricao}</p>
     </div>
   );
 };
