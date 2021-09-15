@@ -3,7 +3,7 @@ import axios from "axios";
 export const Api = {
   url: "http://localhost:3005/tarefas",
 
-  getTarefas: () => axios.get(Api.url),
+  getTarefas: (filter) => axios.get(`${Api.url}/${filter}`),
 
   getTarefa: (id) => axios.get(`${Api.url}/${id}`),
   

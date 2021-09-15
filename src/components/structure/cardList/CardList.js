@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ToDoCard from "../card/ToDoCard";
 import MockCard from "../mockCard/MockCard";
 import axios from "axios";
+import { Api } from "../../../modules/Api/Api";
 import "./CardList.scss";
 
 const CardList = () => {
@@ -9,10 +10,17 @@ const CardList = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:3005/tarefas/${filter}`).then((res) => {
+    Api.getTarefas(filter).then((res) => {
       setTarefas(res.data);
     });
-  }, [filter]);
+  }, [filter, tarefas]);
+
+  function handleDeleteItem(id) {
+    Api.deleteTarefa(id);
+    Api.getTarefas(filter).then((res) => {
+      setTarefas(res.data);
+    });
+  }
 
   return (
     <div className="card-list">
@@ -42,7 +50,11 @@ const CardList = () => {
       </div>
       <MockCard />
       {tarefas.map((tarefa) => (
-        <ToDoCard key={tarefa._id} tarefa={tarefa} />
+        <ToDoCard
+          key={tarefa._id}
+          tarefa={tarefa}
+          onDelete={handleDeleteItem}
+        />
       ))}
     </div>
   );
