@@ -3,9 +3,9 @@ import axios from "axios";
 export const Api = {
   url: "http://localhost:3005/tarefas",
 
-  getTarefas: (filter) => axios.get(`${Api.url}/${filter}`),
+  getTarefas: async (filter) => await axios.get(`${Api.url}/${filter}`),
 
-  getTarefa: (id) => axios.get(`${Api.url}/${id}`),
+  getTarefa: async (id) => await axios.get(`${Api.url}/${id}`),
   
   postTarefa: (body) => {
     return axios.post(`${Api.url}/add`, body);

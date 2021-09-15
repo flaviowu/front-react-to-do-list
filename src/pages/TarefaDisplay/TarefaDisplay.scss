@@ -1,0 +1,74 @@
+@import "../../../styles/colors";
+
+@mixin group-card-details {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+
+    h4{
+        margin: 0 .5rem 0 0;
+    }
+}
+
+.tarefa-big {
+	box-shadow: 3px 4px 0px 0px #899599;
+    border: solid $color-primary;
+    padding: 1rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    color: $color-primary;
+    margin: 1.5rem 0 0 0;
+    width: 20rem;
+    
+    &-detalhes-A{
+        @include group-card-details;
+    }
+
+    &-detalhes-B {
+        @include group-card-details;
+
+    }
+    &-detalhes-C {
+        @include group-card-details;
+
+    }
+    &-detalhes-D {
+        @include group-card-details;
+
+    }
+    &-detalhes-E {
+        @include group-card-details;
+    }
+
+    &-detalhes-btn{
+        margin: 1rem 0 0 0;
+
+        button {
+            border: solid $color-primary;
+            display:inline-block;
+            cursor:pointer;
+            width: 5rem;
+            height: 2.5rem;
+            margin: 0 .5rem 0 .5rem;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        button:active {
+            position:relative;
+            top:1px;
+        }
+        
+
+        #editar-btn {
+            background-color: $color-secondary;
+        }
+
+        #deletar-btn {
+            background-color: $color-danger;
+
+        }
+    }
+}

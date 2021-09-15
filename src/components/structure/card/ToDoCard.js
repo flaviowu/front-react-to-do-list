@@ -6,16 +6,18 @@ import { dataFormat } from "../../../modules/utilities/getData";
 import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
-import DoneIcon from '@material-ui/icons/Done';
+import DoneIcon from "@material-ui/icons/Done";
 import "./ToDoCard.scss";
 
 // OBS: prioridade 1- baixa, 2- normal, 3-alta
 const ToDoCard = (props) => {
   const [tarefa, setTarefa] = useState(props.tarefa);
   const [prioridade, setPrioridade] = useState(props.tarefa.prioridade);
+  const [situacao, setSituacao] = useState(props.tarefa.situacao);
 
   useEffect(() => {
     setPrioridade(getPrioridade(prioridade));
+
   }, []);
 
   function handleDelete(id) {
@@ -34,10 +36,11 @@ const ToDoCard = (props) => {
         <p>
           <span>Prioridade:</span> {prioridade}
         </p>
+        <p>
+          <span>Situação:</span> {situacao}
+        </p>
         <div className="action-icons">
-          <Link to={"/"} className="link">
-          <DoneIcon style={{ fontSize: 15 }} />
-          </Link>
+
           <Link to={`/view/${tarefa._id}`} className="link">
             <VisibilityOutlinedIcon style={{ fontSize: 15 }} />
           </Link>

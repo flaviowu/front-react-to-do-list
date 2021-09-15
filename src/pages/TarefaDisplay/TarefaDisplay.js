@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { getPrioridade } from "../../modules/utilities/getPrioridade";
 import { dataFormat } from "../../modules/utilities/getData";
 import { Api } from "../../modules/Api/Api";
+import "./TarefaDisplay.scss";
 
 const TarefaDisplay = (props) => {
-  const [ tarefa, setTarefa ] = useState({});
-
+  const [tarefa, setTarefa] = useState({});
+  let history = useHistory();
   // console.log(props.match.params.id)
   const id = props.match.params.id;
 
@@ -18,22 +19,46 @@ const TarefaDisplay = (props) => {
       .catch((err) => console.log(err));
   });
 
+  function handleDelete() {
+    Api.deleteTarefa(id)
+    history.push("/")
+  }
+
+  function handleGoBack() {
+    history.push("/")
+  }
+
   return (
-    <div className="tarefa-display">
-      <h3>Detalhes da tarefa:</h3>
-      <h4>Título:</h4>
-      <p>{tarefa.titulo}</p>
-      <h4>Situação:</h4>
-      <p>{tarefa.situacao}</p>
-      <h4>Prazo:</h4>
-      <p>{dataFormat(tarefa.prazo)}</p>
-      <h4>Prioridade:</h4>
-      <p>{getPrioridade(tarefa.prioridade)}</p>
-      <h4>Detalhes:</h4>
-      <p>{tarefa.descricao}</p>
-      <Link to={`/edit/${tarefa._id}`}>
-        <button type="button">Editar</button>
-      </Link>
+    <div className="tarefa-big">
+      <div className="tarefa-big-detalhes-A">
+        <h4>Título:</h4>
+        <p>{tarefa.titulo}</p>
+      </div>
+      <div className="tarefa-big-detalhes-B">
+        <h4>Situação:</h4>
+        <p>{tarefa.situacao}</p>
+      </div>
+      <div className="tarefa-big-detalhes-C">
+        <h4>Prazo:</h4>
+        <p>{dataFormat(tarefa.prazo)}</p>
+      </div>
+      <div className="tarefa-big-detalhes-D">
+        <h4>Prioridade:</h4>
+        <p>{getPrioridade(tarefa.prioridade)}</p>
+      </div>
+      <div className="tarefa-big=detalhes-E">
+        <h4>Detalhes:</h4>
+        <p>{tarefa.descricao}</p>
+      </div>
+      <div className="tarefa-big-detalhes-btn">
+        <Link to={`/edit/${tarefa._id}`}>
+          <button type="button" className="detalhes-button" id="editar-btn">Editar</button>
+        </Link>
+         <button type="button" className="detalhes-button" id="deletar-btn" onClick={handleDelete}>Deletar</button>
+         <button type="button" className="detalhes-button" id="voltar-btn" onClick={handleGoBack}>Voltar</button>
+      </div>
+
+    
     </div>
   );
 };

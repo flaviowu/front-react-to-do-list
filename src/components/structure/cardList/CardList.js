@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ToDoCard from "../card/ToDoCard";
 import MockCard from "../mockCard/MockCard";
-import axios from "axios";
 import { Api } from "../../../modules/Api/Api";
 import "./CardList.scss";
 
 const CardList = () => {
   const [tarefas, setTarefas] = useState([]);
+  const [tarefa, setTarefa] = useState({});
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
