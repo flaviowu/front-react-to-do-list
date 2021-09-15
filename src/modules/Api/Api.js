@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const Api = {
-  url: "http://localhost:3005/tarefas",
+  url: "https://todolist-byflaviowu.herokuapp.com/tarefas",
 
   getTarefas: async (filter) => await axios.get(`${Api.url}/${filter}`),
 
