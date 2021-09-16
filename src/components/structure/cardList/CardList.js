@@ -10,11 +10,11 @@ const CardList = () => {
   const [filter, setFilter] = useState("");
   const [gatilho, setGatilho] = useState(true);
 
-  useEffect(() => {
-    Api.getTarefas(filter).then((res) => {
-      setTarefas(res.data);
-    });
-  }, [filter, gatilho]);
+  // useEffect(() => {
+  //   Api.getTarefas(filter).then((res) => {
+  //     setTarefas(res.data);
+  //   });
+  // }, [filter, gatilho]);
   
   useEffect(() => {
     Api.getTarefas(filter).then((res) => {
@@ -24,10 +24,11 @@ const CardList = () => {
 
   async function handleDeleteItem(id) {
     Api.deleteTarefa(id);
-    Api.getTarefas(filter).then((res) => {
-      setTarefas(res.data);
+
+    // Api.getTarefas(filter).then((res) => {
+    //   setTarefas(res.data);
       setGatilho(!gatilho);
-    });
+    // });
   }
 
   return (
