@@ -6,19 +6,27 @@ import "./CardList.scss";
 
 const CardList = () => {
   const [tarefas, setTarefas] = useState([]);
-  const [tarefa, setTarefa] = useState({});
+  // const [tarefa, setTarefa] = useState({});
   const [filter, setFilter] = useState("");
+  const [gatilho, setGatilho] = useState(true);
 
   useEffect(() => {
     Api.getTarefas(filter).then((res) => {
       setTarefas(res.data);
     });
-  }, [filter, tarefas]);
+  }, [filter, gatilho]);
+  
+  useEffect(() => {
+    Api.getTarefas(filter).then((res) => {
+      setTarefas(res.data);
+    });
+  });
 
-  function handleDeleteItem(id) {
+  async function handleDeleteItem(id) {
     Api.deleteTarefa(id);
     Api.getTarefas(filter).then((res) => {
       setTarefas(res.data);
+      setGatilho(!gatilho);
     });
   }
 

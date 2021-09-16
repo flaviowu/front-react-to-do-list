@@ -38,6 +38,7 @@ const TarefaEdit = (props) => {
     console.log(Tarefa);
 
     Api.putTarefa(id, Tarefa);
+     history.push(`/view/${id}`)
   }
 
   function handleChange(e) {

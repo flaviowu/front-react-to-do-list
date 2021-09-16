@@ -3,19 +3,13 @@ import axios from "axios";
 export const Api = {
   url: "https://todolist-byflaviowu.herokuapp.com/tarefas",
 
-  getTarefas: async (filter) => await axios.get(`${Api.url}/${filter}`),
+  getTarefas: async (filter) => axios.get(`${Api.url}/${filter}`),
 
-  getTarefa: async (id) => await axios.get(`${Api.url}/${id}`),
+  getTarefa: async (id) => axios.get(`${Api.url}/${id}`),
   
-  postTarefa: (body) => {
-    return axios.post(`${Api.url}/add`, body);
-  },
+  postTarefa: async (body) => axios.post(`${Api.url}/add`, body),
 
-  putTarefa: (id, body) => {
-    return axios.put(`${Api.url}/update/${id}`, body);
-  },
+  putTarefa: async (id, body) => axios.put(`${Api.url}/update/${id}`, body),
 
-  deleteTarefa: (id) => {
-    return axios.delete(`${Api.url}/delete/${id}`);
-  },
+  deleteTarefa: async (id) => axios.delete(`${Api.url}/delete/${id}`)
 };

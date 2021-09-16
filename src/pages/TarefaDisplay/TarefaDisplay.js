@@ -16,9 +16,8 @@ const TarefaDisplay = (props) => {
       .then((res) => {
         setTarefa(res.data);
       })
-      .catch((err) => console.log(err));
   });
-
+  
   function handleDelete() {
     Api.deleteTarefa(id)
     history.push("/")
@@ -30,6 +29,7 @@ const TarefaDisplay = (props) => {
 
   return (
     <div className="tarefa-big">
+      <h3>Detalhes da Tarefa</h3>
       <div className="tarefa-big-detalhes-A">
         <h4>Título:</h4>
         <p>{tarefa.titulo}</p>
@@ -57,8 +57,6 @@ const TarefaDisplay = (props) => {
          <button type="button" className="detalhes-button" id="deletar-btn" onClick={handleDelete}>Deletar</button>
          <button type="button" className="detalhes-button" id="voltar-btn" onClick={handleGoBack}>Voltar</button>
       </div>
-
-    
     </div>
   );
 };

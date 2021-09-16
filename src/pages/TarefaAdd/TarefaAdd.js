@@ -1,13 +1,13 @@
 import React from "react";
 import { dataFormatISO } from "../../modules/utilities/getData";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Api } from "../../modules/Api/Api";
 
 const TarefaAdd = (props) => {
   let history = useHistory();
 
   function handleCancel() {
-    history.push("/")
+    history.push("/");
   }
 
   function handleSubmit(e) {
@@ -28,7 +28,8 @@ const TarefaAdd = (props) => {
 
     console.log(Tarefa);
 
-    Api.postTarefa(Tarefa).then(res => console.log(res));
+    Api.postTarefa(Tarefa)
+    history.push("/")
   }
 
   return (
@@ -37,7 +38,7 @@ const TarefaAdd = (props) => {
         <h3>Nova Tarefa</h3>
         <div className="tarefa-add-form-titulo">
           <h4>Título:</h4>
-          <input type="text" name="titulo" id="titulo" />
+          <input type="text" name="titulo" id="titulo" required={true} />
         </div>
         <div className="tarefa-add-form-situacao">
           <h4>Situação</h4>
@@ -50,7 +51,7 @@ const TarefaAdd = (props) => {
         <div className="tarefa-add-form-prazo">
           <h4>Prazo:</h4>
 
-          <input type="date" name="prazo" id="prazo" />
+          <input type="date" name="prazo" id="prazo" required={true} />
         </div>
         <div className="tarefa-add-form-prioridade">
           <h4>Prioridade:</h4>
@@ -72,9 +73,11 @@ const TarefaAdd = (props) => {
           ></textarea>
         </div>
         <div className="tarefa-add-for-btn">
-          <button type="submit">Salvar</button>
+            <button type="submit">Salvar</button>
           <button type="reset">Limpar</button>
-          <button type="button" onClick={handleCancel}>Cancelar</button>
+          <button type="button" onClick={handleCancel}>
+            Cancelar
+          </button>
         </div>
       </form>
     </div>
